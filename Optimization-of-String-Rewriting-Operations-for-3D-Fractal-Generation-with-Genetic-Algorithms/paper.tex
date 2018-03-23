@@ -1,0 +1,59 @@
+\documentclass{llncs}
+
+\usepackage{graphicx}
+\usepackage{placeins}
+
+\begin{document}
+
+\title{Optimization of String Rewriting Operations for 3D Fractal Generation with Genetic Algorithms}
+
+\author{Todor Balabanov, Janeta Sevova, Kolyu Kolev}
+
+% Todor Balabanov todorb@iinf.bas.bg
+% Kolyu Kolev kolev_kolyu@yahoo.com
+% Janeta Sevova janetasevova@gmail.com
+
+\institute{Institute of Information and Communication Technologies \\
+Bulgarian Academy of Sciences \\
+acad. Georgi Bonchev Str., block 2, office 514, 1113 Sofia, Bulgaria \\
+\email{todorb@iinf.bas.bg} \\
+\texttt{http://www.iict.bas.bg/}}
+
+%----------------------------------------------------------------------------------------
+%   Title
+%----------------------------------------------------------------------------------------
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%   Abstract
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+String rewriting is a modification of the idea for the context-free grammar. Modification consists in the fact that there is not separation on terminal and nonterminal symbols. Each symbol in string rewriting is considered as nonterminal and it can produce longer sequence. By this way infinite structures are created as fractals. In a video presentation Jack Hodkinson suggested the idea instead of text symbols pixels in 2D image to be used. Each pixel (geometric square) is divided in nine sub-squares. The color of the pixel determine the pattern in which the nine squares are arranged. By this way each pixel gives a rule for subdivision of the area under it. The goal of Hodkinson's investigation is how to setup the rules in such way that when the rules are applied fractal to reproduce a particular 2D image (in particular case the glyph of the Greek letter $\pi$). Because it is an optimization problem a good option was a genetic algorithm and this is exactly what Hodkinson did. The genetic algorithm was used to assemble set of rules for string rewriting with 2D pixels. Hodkinson did series of experiments with the size of substitution matrix (not only 3x3, but also 2x2 and 4x4). He also did series of experiments with different number of colors, starting with black/white and reaching the final successful experiment with thirty shades of blue. In this study the idea for string rewriting is extended in the 3D space and instead of pixels voxels are used with 3x3x3 substitution matrix. The study is only on virtual models but with the usage of industrial tomography 3D objects can be scanned and with 3D color printer generated fractals can be printed.
+
+\keywords{genetic algorithms, fractals generation, string rewriting}
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%   Paper
+%----------------------------------------------------------------------------------------
+\section{Introduction} \label{Introduction}
+
+\section{Optimization} \label{Optimization}
+
+\section{Experiments} \label{Experiments}
+
+\section{Conclusions} \label{Conclusions}
+
+%----------------------------------------------------------------------------------------
+%   Acknowledgements
+%----------------------------------------------------------------------------------------
+\section*{Acknowledgements}
+This work was supported by private funding of Velbazhd Software LLC.
+
+%----------------------------------------------------------------------------------------
+%   Bibliography
+%----------------------------------------------------------------------------------------
+\begin{thebibliography}{99}
+\end{thebibliography}
+
+\end{document}
