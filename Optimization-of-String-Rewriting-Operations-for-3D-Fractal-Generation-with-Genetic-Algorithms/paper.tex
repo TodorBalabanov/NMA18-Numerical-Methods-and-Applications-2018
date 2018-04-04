@@ -38,7 +38,7 @@ String rewriting is a modification of the idea for the context-free grammar. Mod
 %----------------------------------------------------------------------------------------
 \section{Introduction} \label{Introduction}
 
-There is a branch in the theory for the formal languages which is related to a context-free grammar (CFG). In such grammar there are set of production rules. Application of these rules lead to generation of all possible strings in a specified formal language. In CFG a production rule is an operation of simple replacement. Rules are applied regardless of the context. The left hand side of a CFG rule is always nonterminal symbol. It means that nonterminal symbols are not part of the resulting string. The right hand side of a CFG rule consists of terminal symbol, nonterminal symbols or combination of both. The main idea in CFGs is that nonterminal symbols are substituted with the given rules until there is no nonterminal symbols in the generated string. 
+There is a branch in the theory for the formal languages which is related to a context-free grammar (CFG). In such grammar there are set of production rules. Application of these rules lead to generation of all possible strings in a specified formal language \cite{ochoa01}. In CFG a production rule is an operation of simple replacement. Rules are applied regardless of the context. The left hand side of a CFG rule is always nonterminal symbol. It means that nonterminal symbols are not part of the resulting string. The right hand side of a CFG rule consists of terminal symbol, nonterminal symbols or combination of both. The main idea in CFGs is that nonterminal symbols are substituted with the given rules until there is no nonterminal symbols in the generated string. 
 
 String rewriting system (SRS) is a substitution system in which rules does not contain nonterminal symbols. Each terminal symbol can appear on the LHS of the rule and on the RHS of the rule. With such definition SRS are useful for generation of infinite structures and they are mainly used for the generation of some fractals (for example: Box Fractal, Cantor Dust, Cantor Square Fractal and Sierpinski Carpet). Most of the fractals are generated with binary rules (black and white colors), but in the Hodkinson's research it is clearly shown that limit of the colors can be higher. 
 
@@ -59,6 +59,8 @@ This study extends the same idea from 2D space into 3D space. Voxels are used in
 
 \section{Conclusions} \label{Conclusions}
 
+The extension of the idea for fractal generation from 2D to 3D space shows that in 3D space the process is much more time consuming than in the 2D space. Voxel based representation of 3D objects consumes too much computational resources. Generated objects are not applicable in real use, but results achieved are promising for further research of the fractal nature of the world in which all we are living. 
+
 %----------------------------------------------------------------------------------------
 %   Acknowledgements
 %----------------------------------------------------------------------------------------
@@ -69,6 +71,9 @@ This work was supported by private funding of Velbazhd Software LLC.
 %   Bibliography
 %----------------------------------------------------------------------------------------
 \begin{thebibliography}{99}
+
+\bibitem{ochoa01} Ochoa, G., \textit{On Genetic Algorithms and Lindenmayer Systems}, Parallel Problem Solving from Nature, Lecture Notes in Computer Science, vol. 1498, ISBN 978-3-540-65078-2, 335--344, 1998.
+
 \end{thebibliography}
 
 \end{document}
