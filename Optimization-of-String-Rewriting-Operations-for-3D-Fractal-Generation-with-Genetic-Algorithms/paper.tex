@@ -2,6 +2,9 @@
 
 \usepackage{graphicx}
 \usepackage{placeins}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amssymb}
 
 \begin{document}
 
@@ -55,9 +58,58 @@ This study extends the same idea from 2D space into 3D space. Voxels are used in
 
 \section{Model and Optimization} \label{Model and Optimization}
 
-A finite 3D space is represented as three-dimensional array of voxels in the model. Each voxel is encoded with a single long integer value, which consists of the RGB information for the color of the voxel. In this model 32 different transition 3x3x3 matrices are selected, each corresponding to the one of the 32 colors. 
+A finite 3D space is represented as three-dimensional array of voxels in the model. Each voxel is encoded with a single long integer value, which consists of the RGB information for the color of the voxel. In this model 32 different transition 3x3x3 matrices are selected, each corresponding to the one of the 32 colors. The steps for fractal generation are given in Algorithm \ref{alg:algo01}.
+
+\begin{algorithm}
+\caption{Fractal generation algorithm.}\label{alg:algo01}
+\begin{algorithmic}[1]
+\Procedure{Generate}{$Level,Voxel$}
+\If{$Level \leqslant 0$}
+  \State return\label{alg:step04}
+\EndIf
+\State $v\gets Split(Voxel)$\label{alg:step01}
+\For{each $v$}
+  \State Paint($v$)\label{alg:step02}
+  \State Generate($Leve$-1, $v$)\label{alg:step03}
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+
+The splitting of the voxel is done on 27 smaller voxels with 1/3 side size of the original Step \ref{alg:step01}. Each sub-voxel is painted according to the color of transition matrix pattern Step \ref{alg:step02}. A recursive call of generator procedure is done for each sub-voxel Step \ref{alg:step03}. Recursive generation of the fractal stops when the recursion level reached zero Step \ref{alg:step04}.
+
+The individuals in the genetic algorithm are presented as 32 transition matrices each with size 3x3x3. The order of the matrices shows which transition will be applied according to used colors order. The steps of the optimization are illustrated in Algorithm \ref{alg:algo02}. 
+
+\begin{algorithm}
+\caption{Genetic algorithm.}\label{alg:algo02}
+\begin{algorithmic}[1]
+\Procedure{Optimization}{}
+\State $p \gets Initialize()$\Comment{Initialize population.}
+\While{$TimeLimit > 0$}
+  \State Selection($p$)\Comment{Select parents.}\label{alg:step05}
+  \State Crossover($p$)\Comment{Crossover parents.}
+  \State Mutation($p$)\Comment{Mutate children.}
+  \State Evaluation($p$)\Comment{Evaluate offspring.}
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+
+Tournament selection with arity of two is proposed. Binary crossover is taken as the most symmetric crossover. From each parent randomly are taken 50\% of the elements. Random change of a color is used for the mutation operator. The evaluation is done by application of each 32 transition matrices with the certain level of recursion depth. Euclidean distance between generated fractal and target shape is used as fitness function. The initial fractal is a single cube painted with the color with the first index in the order of the colors. Genetic algorithms are global heuristics optimization and this means that it does not matter what kind of color the initial voxel will have. 
 
 \section{Experiments and Results} \label{Experiments and Results}
+
+All experiments are done in Java programming language with Apache Genetic Algorithms Framework \cite{apache01} as an optimization approach and Printing in 3D - JavaSCAD \cite{printing01} as 3D visualization tool. The source code used for all experiments is an open source and can be found at \cite{balabanov01}. Increasing the space dimensions from 2D to 3D greatly increases the complexity of the optimization process. Because of the increased complexity less ambitious shape than the Greek letter $\pi$ is taken, in our case it is a voxelized sphere (Fig. \ref{fig:pic02}). For visualization purposes the first color in the set of colors is accepted as transparent. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{pic02}
+  \caption{Voxelized sphere.}
+\label{fig:pic02}
+\end{figure}
+\FloatBarrier
 
 \section{Conclusions} \label{Conclusions}
 
@@ -75,6 +127,12 @@ This work was supported by private funding of Velbazhd Software LLC.
 \begin{thebibliography}{99}
 
 \bibitem{ochoa01} Ochoa, G., \textit{On Genetic Algorithms and Lindenmayer Systems}, Parallel Problem Solving from Nature, Lecture Notes in Computer Science, vol. 1498, ISBN 978-3-540-65078-2, 335--344, 1998.
+
+\bibitem{apache01} The Apache Software Foundation, \textit{Genetic Algorithms - Apache Commons}, http://commons.apache.org/proper/commons-math/userguide/genetics.html , 2018.
+
+\bibitem{printing01} PrintingIn3D, \textit{Printing in 3D - JavaSCAD}, https://www.printingin3d.eu/javascad , 2018.
+
+\bibitem{balabanov01} Balabanov, T., \textit{The idea of Jack Hodkinson for fractal generation implemented in 3D version}, http://github.com/TodorBalabanov/Jack-Hodkinson-3D-Fractal , 2018.
 
 \end{thebibliography}
 
