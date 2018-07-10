@@ -32,7 +32,7 @@ acad. Georgi Bonchev Str., block 2, office 514, 1113 Sofia, Bulgaria \\
 %   Abstract
 %----------------------------------------------------------------------------------------
 \begin{abstract}
-String rewriting is a modification of the idea for the context-free grammar. Modification consists in the fact that there is not separation on terminal and nonterminal symbols. Each symbol in string rewriting, is considered as nonterminal and it can produce longer sequence. By this way infinite structures are created as fractals. In a video presentation by Jack Hodkinson is suggested the use of 2D images instead of text symbol pixels. Each pixel (geometric square) is divided in nine sub-squares. The color of the pixel determine the pattern in which the nine squares are arranged. By this way each pixel gives a rule for subdivision of the containing area. Hodkinson gives a method, to setup the fractal, to reproduce a particular 2D image (for example, the glyph of the Greek letter $\pi$). This is an optimization problem, so a good option is the use of genetic algorithm (GA), to assemble set of rules, for string rewriting with 2D pixels. Series of experiments with the size of substitution matrix (not only 3x3, but also 2x2 and 4x4) are done by Hodkinson. Also are made series of experiments with different number of colors, starting with black/white and reaching the final successful experiment with thirty shades of blue. In this study the idea for string rewriting is extended in the 3D space and instead of pixels voxels are used with 3x3x3 substitution matrix. The study is only on virtual models but with the usage of industrial tomography, 3D objects can be scanned and with 3D color printer generated fractals can be printed.
+String rewriting is a modification of the idea for the context-free grammar. Modification consists in the fact that there is not separation on terminal and nonterminal symbols. Each symbol in string rewriting, is considered as nonterminal and it can produce longer sequence. By this way infinite structures are created as fractals. In a video presentation by Jack Hodkinson the use of 2D images instead of text symbol pixels is suggested. Each pixel (geometric square) is divided in nine sub-squares. The color of the pixel determine the pattern in which the nine squares are arranged. By this way each pixel gives a rule for subdivision of the containing area. Hodkinson gives a method, to setup the fractal, to reproduce a particular 2D image (for example, the glyph of the Greek letter $\pi$). This problem is well known in the fractals theory as Fractal Inverse Problem (FIP). It is an optimization problem, so a good option is the use of genetic algorithm (GA), to assemble set of rules, for string rewriting with 2D pixels. Series of experiments with the size of substitution matrix (not only 3x3, but also 2x2 and 4x4) are done by Hodkinson. Also are made series of experiments with different number of colors, starting with black/white and reaching the final successful experiment with thirty shades of blue. In this study the idea for string rewriting is extended in the 3D space and instead of pixels voxels are used with 3x3x3 substitution matrix. The study is only on virtual models but with the usage of industrial tomography, 3D objects can be scanned and with 3D color printer generated fractals can be printed.
 \keywords{genetic algorithms, fractals generation, string rewriting}
 \end{abstract}
 
@@ -41,18 +41,18 @@ String rewriting is a modification of the idea for the context-free grammar. Mod
 %----------------------------------------------------------------------------------------
 \section{Introduction} \label{Introduction}
 
-There is a branch in the theory for the formal languages which is related to a context-free grammar (CFG). In such grammar there are set of production rules. Application of these rules, lead to generation of all possible strings in a specified formal language \cite{ochoa01}. In CFG, a production rule is an operation of simple replacement. Rules are applied regardless of the context. The left hand side of a CFG rule is always nonterminal symbol. It means that nonterminal symbols are not part of the resulting string. The right hand side of a CFG rule, consists of terminal symbol, nonterminal symbols or combination of both. The main idea in CFGs is that nonterminal symbols are substituted with the given rules until there is no nonterminal symbols in the generated string.
+This study addresses IFP which is well known in the fractals theory \cite{guerin01}. There is a branch in the theory for the formal languages which is related to a context-free grammar (CFG). In such grammar there are set of production rules. Application of these rules, lead to generation of all possible strings in a specified formal language \cite{ochoa01}. In CFG, a production rule is an operation of simple replacement. Rules are applied regardless of the context. The left hand side of a CFG rule is always nonterminal symbol. It means that nonterminal symbols are not part of the resulting string. The right hand side of a CFG rule, consists of terminal symbol, nonterminal symbols or combination of both. The main idea in CFGs is that nonterminal symbols are substituted with the given rules until there is no nonterminal symbols in the generated string.
 
 String rewriting system (SRS) is a substitution system in which the rules does not contain nonterminal symbols. Each terminal symbol can appear on the left hand side (LHS) of the rule and on the right hand side (RHS) of the rule. With such definition SRS are useful for generation of infinite structures and they are mainly used for the generation of some fractals (for example: Box Fractal, Cantor Dust, Cantor Square Fractal and Sierpinski Carpet). Most of the fractals are generated with binary rules (black and white colors), but in the Hodkinson's research it is clearly shown that limit of the colors can be higher.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=1.0\linewidth]{pic01}
+  \includegraphics[width=0.5\linewidth]{pic01}
   \caption{Fractal generated by Jack Hodkinson.}
 \label{fig:pic01}
 \end{figure}
 
-In Hodkinson's research, the genetic algorithms (GAs) are used for 2D shape of Greek letter $\pi$, to be reconstructed with substitution rules of 30 shades of blue pixels (Fig. \ref{fig:pic01}). The key problem in this research is which rules to be selected to achieved the final goal. GAs is a promising approach for such kind of combinatorial optimization. A single rule has LHS pixel with particular color and nine pixels on the RHS as 3x3 substitution matrix. Image starts with a single pixel and it grows on size by 3 on each iteration. 
+The problem in 1D is well presented by \cite{shonkwiler01}. In Hodkinson's research, the genetic algorithms (GAs) are used for 2D shape of Greek letter $\pi$, to be reconstructed with substitution rules of 30 shades of blue pixels (Fig. \ref{fig:pic01}). The key problem in this research is which rules to be selected to achieved the final goal. GAs is a promising approach for such kind of combinatorial optimization. A single rule has LHS pixel with particular color and nine pixels on the RHS as 3x3 substitution matrix. Image starts with a single pixel and it grows on size by 3 on each iteration. 
 
 This study extends the idea from 2D space into 3D space, which is the main contribution of the authors. Voxels are used instead of pixels. Square matrix of 3x3 is replaced with cube 3x3x3. The paper is organized as follows: Section \ref{Introduction} introduces the problem; Section \ref{Model and Optimization} presents a model and optimization approach; Section \ref{Experiments and Results} gives experiment details and the results are shown; Section \ref{Conclusions} concludes and some further ideas for research are pointed.
 
@@ -81,7 +81,7 @@ The splitting of the voxel is done on 27 smaller voxels with 1/3 side size of th
 
 The individuals in the genetic algorithm are presented as 32 transition matrices each with size 3x3x3 (Listing \ref{listing03} in \cite{balabanov01}). Long integer numbers are used for RGB color representation for all 27 cells of the transition matrix. 
 
-\begin{lstlisting}[language=Java, caption=Chromosomes Encoding, label=listing03]
+\begin{lstlisting}[language=Java, caption=Chromosomes encoding., label=listing03]
 List<Chromosome> list = new LinkedList<Chromosome>();
 
 for (int i = 0; i < 37; i++) {
@@ -117,7 +117,7 @@ The order of the matrices shows which transition will be applied according to us
 
 Parents in the population are appointed by tournament selection with arity of two (Listing \ref{listing01} in \cite{balabanov01}). 
 
-\begin{lstlisting}[language=Java, caption=Genetic Algorithm Parameters, label=listing01]
+\begin{lstlisting}[language=Java, caption=Genetic algorithm parameters., label=listing01]
 GeneticAlgorithm optimizer = new GeneticAlgorithm(
 new UniformCrossover<TransitionsChromosome>(0.5), 0.9, 
 new TransitionsMutation(COLORS), 0.01, 
@@ -126,7 +126,7 @@ new TournamentSelection(2));
 
 Uniform crossover is taken as the most symmetric crossover (Listing \ref{listing01} in \cite{balabanov01}). From each parent randomly are taken 50\% of the elements. Random change of a color is used for the mutation operator (Listing \ref{listing02} in \cite{balabanov01}). 
 
-\begin{lstlisting}[language=Java, caption=Single Voxel Color Mutation, label=listing02]
+\begin{lstlisting}[language=Java, caption=Color mutation of a single voxel., label=listing02]
 List<Long> values = new 
 ArrayList<Long>(((TransitionsChromosome) original).
 getRepresentation());
@@ -135,7 +135,23 @@ values.set(PRNG.nextInt(values.size()),
 colors[PRNG.nextInt(colors.length)]);
 \end{lstlisting}
 
-The evaluation is done by application of each 32 transition matrices with the certain level of recursion depth. Euclidean distance between generated fractal and target shape is used as fitness function. The initial fractal is a single cube painted with the color with the first index in the order of the colors. Genetic algorithms are global heuristics optimization and this means that it does not matter what kind of color the initial voxel will have. 
+The evaluation is done by application of each 32 transition matrices with the certain level of recursion depth. As suggested in \cite{guerin01}, an Euclidean distance between generated fractal and target shape is used as fitness function (Listing \ref{listing04} in \cite{balabanov01}). 
+
+\begin{lstlisting}[language=Java, caption=Euclidean distance between voxels., label=listing04]
+double result = 0;
+for (int x = 0; x < a.length && 
+		x < b.length; x++)
+for (int y = 0; y < a[x].length && 
+		y < b[x].length; y++)
+for (int z = 0; z < a[x][y].length && 
+		z < b[x][y].length; z++)
+result += (a[x][y][z] - b[x][y][z]) * 
+	(a[x][y][z] - b[x][y][z]);
+
+result = Math.sqrt(result);
+\end{lstlisting}
+
+The initial fractal is a single cube painted with the color with the first index in the order of the colors. Genetic algorithms are global heuristics optimization and this means that it does not matter what kind of color the initial voxel will have. 
 
 \section{Experiments and Results} \label{Experiments and Results}
 
@@ -202,11 +218,15 @@ This work was supported by private funding of Velbazhd Software LLC.
 %----------------------------------------------------------------------------------------
 \begin{thebibliography}{99}
 
+\bibitem{guerin01} Guerin E., Tosan E., \textit{Fractal Inverse Problem: Approximation Formulation and Differential Methods}, In: Levy-Vehel J., Lutton E. (eds) Fractals in Engineering. Springer, London, ISBN 978-1-84628-047-4, 271--285, 2005.
+
 \bibitem{ochoa01} Ochoa, G., \textit{On Genetic Algorithms and Lindenmayer Systems}, Parallel Problem Solving from Nature, Lecture Notes in Computer Science, vol. 1498, ISBN 978-3-540-65078-2, 335--344, 1998.
+
+\bibitem{shonkwiler01} Shonkwiler R., Mendivil F., Deliu A., \textit{Genetic Algorithms for the 1-D Fractal Inverse Problem}, Proceedings of the Fourth International Conference on Genetic Algorithms, Morgan Kaufmann, 495--501, 1991.
 
 \bibitem{apache01} The Apache Software Foundation, \textit{Genetic Algorithms - Apache Commons}, http://commons.apache.org/proper/commons-math/userguide/genetics.html , 2018.
 
-\bibitem{printing01} PrintingIn3D, \textit{Printing in 3D - JavaSCAD}, https://www.printingin3d.eu/javascad , 2018.
+\bibitem{printing01} PrintingIn3D, \textit{Printing in 3D - JavaSCAD}, http://www.printingin3d.eu/javascad , 2018.
 
 \bibitem{balabanov01} Balabanov, T., \textit{The idea of Jack Hodkinson for fractal generation implemented in 3D version}, http://github.com/TodorBalabanov/Jack-Hodkinson-3D-Fractal , 2018.
 
