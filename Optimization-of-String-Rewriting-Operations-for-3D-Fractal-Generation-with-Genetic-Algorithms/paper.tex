@@ -33,7 +33,7 @@ acad. Georgi Bonchev Str., block 2, office 514, 1113 Sofia, Bulgaria \\
 %----------------------------------------------------------------------------------------
 \begin{abstract}
 String rewriting is a modification of the idea for the context-free grammar. Modification consists in the fact that there is not separation on terminal and nonterminal symbols. Each symbol in string rewriting, is considered as nonterminal and it can produce longer sequence. By this way infinite structures are created as fractals. In a video presentation by Jack Hodkinson the use of 2D images instead of text symbol pixels is suggested. Each pixel (geometric square) is divided in nine sub-squares. The color of the pixel determine the pattern in which the nine squares are arranged. By this way each pixel gives a rule for subdivision of the containing area. Hodkinson gives a method, to setup the fractal, to reproduce a particular 2D image (for example, the glyph of the Greek letter $\pi$). This problem is well known in the fractals theory as Fractal Inverse Problem (FIP). It is an optimization problem, so a good option is the use of genetic algorithm (GA), to assemble set of rules, for string rewriting with 2D pixels. Series of experiments with the size of substitution matrix (not only 3x3, but also 2x2 and 4x4) are done by Hodkinson. Also are made series of experiments with different number of colors, starting with black/white and reaching the final successful experiment with thirty shades of blue. In this study the idea for string rewriting is extended in the 3D space and instead of pixels voxels are used with 3x3x3 substitution matrix. The study is only on virtual models but with the usage of industrial tomography, 3D objects can be scanned and with 3D color printer generated fractals can be printed.
-\keywords{genetic algorithms, fractals generation, string rewriting}
+\keywords{fractal inverse problem, genetic algorithms, string rewriting}
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ String rewriting is a modification of the idea for the context-free grammar. Mod
 %----------------------------------------------------------------------------------------
 \section{Introduction} \label{Introduction}
 
-This study addresses IFP which is well known in the fractals theory \cite{guerin01}. There is a branch in the theory for the formal languages which is related to a context-free grammar (CFG). In such grammar there are set of production rules. Application of these rules, lead to generation of all possible strings in a specified formal language \cite{ochoa01}. In CFG, a production rule is an operation of simple replacement. Rules are applied regardless of the context. The left hand side of a CFG rule is always nonterminal symbol. It means that nonterminal symbols are not part of the resulting string. The right hand side of a CFG rule, consists of terminal symbol, nonterminal symbols or combination of both. The main idea in CFGs is that nonterminal symbols are substituted with the given rules until there is no nonterminal symbols in the generated string.
+This study addresses IFP which is well known in the fractals theory \cite{guerin01,nettleton01}. There is a branch in the theory for the formal languages which is related to a context-free grammar (CFG). In such grammar there are set of production rules. Application of these rules, lead to generation of all possible strings in a specified formal language \cite{ochoa01}. In CFG, a production rule is an operation of simple replacement. Rules are applied regardless of the context. The left hand side of a CFG rule is always nonterminal symbol. It means that nonterminal symbols are not part of the resulting string. The right hand side of a CFG rule, consists of terminal symbol, nonterminal symbols or combination of both. The main idea in CFGs is that nonterminal symbols are substituted with the given rules until there is no nonterminal symbols in the generated string.
 
 String rewriting system (SRS) is a substitution system in which the rules does not contain nonterminal symbols. Each terminal symbol can appear on the left hand side (LHS) of the rule and on the right hand side (RHS) of the rule. With such definition SRS are useful for generation of infinite structures and they are mainly used for the generation of some fractals (for example: Box Fractal, Cantor Dust, Cantor Square Fractal and Sierpinski Carpet). Most of the fractals are generated with binary rules (black and white colors), but in the Hodkinson's research it is clearly shown that limit of the colors can be higher.
 
@@ -52,7 +52,7 @@ String rewriting system (SRS) is a substitution system in which the rules does n
 \label{fig:pic01}
 \end{figure}
 
-The problem in 1D is well presented by \cite{shonkwiler01}. In Hodkinson's research, the genetic algorithms (GAs) are used for 2D shape of Greek letter $\pi$, to be reconstructed with substitution rules of 30 shades of blue pixels (Fig. \ref{fig:pic01}). The key problem in this research is which rules to be selected to achieved the final goal. GAs is a promising approach for such kind of combinatorial optimization. A single rule has LHS pixel with particular color and nine pixels on the RHS as 3x3 substitution matrix. Image starts with a single pixel and it grows on size by 3 on each iteration. 
+The problem in 1D is well presented by \cite{shonkwiler01}, but in Hodkinson's research, the genetic algorithms (GAs) are used for 2D shape of Greek letter $\pi$, to be reconstructed with substitution rules of 30 shades of blue pixels (Fig. \ref{fig:pic01}). The usage of differential evolution is also applicable \cite{zelinka01}, but not in Hodkinson's research, because the optimization is in a discrete space.  The key problem in this research is which rules to be selected to achieved the final goal. GAs is a promising approach for such kind of combinatorial optimization. A single rule has LHS pixel with particular color and nine pixels on the RHS as 3x3 substitution matrix. Image starts with a single pixel and it grows on size by 3 on each iteration. 
 
 This study extends the idea from 2D space into 3D space, which is the main contribution of the authors. Voxels are used instead of pixels. Square matrix of 3x3 is replaced with cube 3x3x3. The paper is organized as follows: Section \ref{Introduction} introduces the problem; Section \ref{Model and Optimization} presents a model and optimization approach; Section \ref{Experiments and Results} gives experiment details and the results are shown; Section \ref{Conclusions} concludes and some further ideas for research are pointed.
 
@@ -220,9 +220,13 @@ This work was supported by private funding of Velbazhd Software LLC.
 
 \bibitem{guerin01} Guerin E., Tosan E., \textit{Fractal Inverse Problem: Approximation Formulation and Differential Methods}, In: Levy-Vehel J., Lutton E. (eds) Fractals in Engineering. Springer, London, ISBN 978-1-84628-047-4, 271--285, 2005.
 
+\bibitem{nettleton01} Nettleton D.J., Garigliano R., \textit{Evolutionary algorithms and a fractal inverse problem}, Biosystems, vol. 33, issue 3, ISSN 0303-2647, 221--231, 1994.
+
 \bibitem{ochoa01} Ochoa, G., \textit{On Genetic Algorithms and Lindenmayer Systems}, Parallel Problem Solving from Nature, Lecture Notes in Computer Science, vol. 1498, ISBN 978-3-540-65078-2, 335--344, 1998.
 
 \bibitem{shonkwiler01} Shonkwiler R., Mendivil F., Deliu A., \textit{Genetic Algorithms for the 1-D Fractal Inverse Problem}, Proceedings of the Fourth International Conference on Genetic Algorithms, Morgan Kaufmann, 495--501, 1991.
+
+\bibitem{zelinka01} Zelinka I., \textit{Inverse Fractal Problem. In: Differential Evolution}, Natural Computing Series. Springer, Berlin, Heidelberg, ISBN 978-3-540-20950-8, 479--498 2005.
 
 \bibitem{apache01} The Apache Software Foundation, \textit{Genetic Algorithms - Apache Commons}, http://commons.apache.org/proper/commons-math/userguide/genetics.html , 2018.
 
