@@ -156,12 +156,12 @@ The initial fractal is a single cube painted with the color with the first index
 
 \section{Experiments and Results} \label{Experiments and Results}
 
-All experiments are done in Java programming language with Apache Genetic Algorithms Framework \cite{apache01} as an optimization approach and Printing in 3D - JavaSCAD \cite{printing01} as 3D visualization tool. The source code used for all experiments is an open source and can be found at \cite{balabanov01} for the interested readers who would like to reproduce the experiments and results. Increasing the space dimensions from 2D to 3D greatly increases the complexity of the optimization process. Because of the increased complexity less ambitious shape than the Greek letter $\pi$ is taken, in our case it is a voxelized sphere (Fig. \ref{fig:pic02}). For visualization purposes the first color in the set of colors is accepted as transparent. 
+All experiments are done in Java programming language with Apache Genetic Algorithms Framework \cite{apache01} as an optimization approach and Printing in 3D - JavaSCAD \cite{printing01} as 3D visualization tool. The source code used for all experiments is an open source and can be found at \cite{balabanov01} for the interested readers who would like to reproduce the experiments and results. Increasing the space dimensions from 2D to 3D greatly increases the complexity of the optimization process. Because of the increased complexity less ambitious shape than the Greek letter $\pi$ is taken, in our case it is a voxelized sphere (Fig. \ref{fig:pic02}). The sphere is one of the simplest 3D objects and that is why it was selected as optimization target. For visualization purposes the first color in the set of colors (1 of 32 in this case) is accepted as transparent. The goal of the experiment is form a single side cube to find such 3x3x3 set of transitions which will lead to fractal generation of a target 3D object (in this case sphere).
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=1.0\linewidth]{pic02}
-  \caption{Voxelized sphere.}
+  \includegraphics[width=0.8\linewidth]{pic02}
+  \caption{Voxelized sphere as fractal optimization target object.}
 \label{fig:pic02}
 \end{figure}
 \FloatBarrier
@@ -197,12 +197,12 @@ optimization minutes & 30 \\
 \begin{figure}[h!]
   \centering
   \includegraphics[width=1.0\linewidth]{pic03}
-  \caption{Steps taken in the optimization process.}
+  \caption{Intermediate snapshots during the optimization process.}
 \label{fig:pic03}
 \end{figure}
 \FloatBarrier
 
-As it is shown in Fig. \ref{fig:pic03} the optimization process converges much more slower in the 3D space than what was achieved by Hodkinson in the 2D space.
+The optimization process converges much more slower in the 3D space than what was achieved by Hodkinson in the 2D space. As it is shown in Fig. \ref{fig:pic03}, starting form a single cube it goes to the desired shape too slowly. 
 
 \section{Conclusions} \label{Conclusions}
 
